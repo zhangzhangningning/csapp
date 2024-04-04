@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "instruction.h": "c",
+        "stdint.h": "c",
+        "register.h": "c",
+        "dram.h": "c",
+        "stdlib.h": "c"
+    }
+}
