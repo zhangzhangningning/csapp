@@ -12,7 +12,7 @@ int main() {
     reg.rbx = 0x555555555190;
     reg.rcx = 0x555555555190;
     reg.rdx = 0xabcd;
-    reg.rsi = 0x7fffffffe078;
+    reg.rsi = 0x7fffffffe0e8;
     reg.rdi = 0x1;
     reg.rbp = 0x7fffffffdf80;
     reg.rsp = 0x7fffffffdf60;

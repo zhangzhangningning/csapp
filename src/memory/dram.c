@@ -50,17 +50,17 @@ void print_stack() {
     uint64_t *high = (uint64_t*)&mm[va2pa(reg.rsp)];
     high = &high[n];
 
-    uint64_t rsp_start = reg.rsp + n * 8;
+    uint64_t rsp_cur = reg.rsp + n * 8; // 虚拟地址
 
     for (int i = 0; i < 2 * n; ++i) {
         uint64_t *ptr = (uint64_t*)(high - i);
-        printf("0x%16lx : %16lx", rsp_start, (uint64_t)*ptr);
+        printf("0x%16lx : %16lx", rsp_cur, (uint64_t)*ptr);
 
         if (i == n) {
             printf(" <== rsp");
         }
 
-        rsp_start -= 8;
+        rsp_cur -= 8;
         printf("\n");
     }
 }

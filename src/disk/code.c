@@ -92,7 +92,8 @@ inst_t program[INST_LEN] = {
         // reg.rip
         CALL,
         {IMM, (uint64_t)&program[0], 0, NULL, NULL},
-        {EMPTY, 0, 0, NULL, NULL}
+        {EMPTY, 0, 0, NULL, NULL},
+        "callq  1129 <add>"
     },
     {
         MOV_REG_MEM,

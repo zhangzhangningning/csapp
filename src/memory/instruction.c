@@ -65,14 +65,14 @@ void mov_reg_mem(uint64_t src, uint64_t dst) {
 void mov_reg_reg_handler(uint64_t src, uint64_t dst) {
     *(uint64_t*)dst = *(uint64_t*)src;
     reg.rip = reg.rip + sizeof(inst_t);
-    reg.rip = src;
 }
 
 void call_handler(uint64_t src, uint64_t dst) {
-    // src: imm num of called num
+    // src: imm num of called function
     reg.rsp = reg.rsp - 8;
     // write return addrss to rsp memory
     write64bits_dram(va2pa(reg.rsp), reg.rip + sizeof(inst_t));
+    reg.rip = src;
 
 
 }
