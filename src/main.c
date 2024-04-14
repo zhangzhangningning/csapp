@@ -30,7 +30,7 @@ int main() {
     printf("========================\n");
 
     // run instruciton
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 15; ++i) {
         instruction_cycle();
         print_register();
         print_stack();
