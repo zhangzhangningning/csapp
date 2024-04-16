@@ -4,6 +4,9 @@
         "stdint.h": "c",
         "register.h": "c",
         "dram.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "memory.h": "c",
+        "common.h": "c",
+        "cpu.h": "c"
     }
 }
