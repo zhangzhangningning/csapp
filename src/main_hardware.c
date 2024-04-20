@@ -6,14 +6,41 @@
 
  #define MAX_NUM_INSTRUCTION_CYCLE 100
 
- static void TestAddFunctionCallAndComputation();
-
+static void TestAddFunctionCallAndComputation();
+static void TestString2uint();
+void TestParsingOperand();
 //  symbols from isa and sram
 void print_register(core_t *cr);
 void print_stack(core_t *cr);
 
+static void TestString2Uint()
+{
+    const char*nums[12] =
+    {
+        "0",
+        "-0",
+        "0x0",
+        "1234",
+        "0x1234",
+        "0xabcd",
+        "-0xabcd",
+        "-1234",
+        "2147483647",
+        "-2147483648",
+        "0x8000000000000000",
+        "0xffffffffffffffff",
+    };
+
+    for (int i = 0; i < 12; ++ i)
+    {
+        printf("%s => %lx\n", nums[i], string2uint(nums[i]));
+    }
+}
+
 int main() {
-    TestAddFunctionCallAndComputation();
+    // TestAddFunctionCallAndComputation();
+    TestParsingOperand();
+    // TestString2Uint();
     return 0;
 }
 
@@ -29,11 +56,6 @@ static void TestAddFunctionCallAndComputation() {
     ac->reg.rdi = 0x1;
     ac->reg.rbp = 0x7fffffffdf80;
     ac->reg.rsp = 0x7fffffffdf60;
-
-    ac->CF = 0;
-    ac->ZF = 0;
-    ac->SF = 0;
-    ac->OF = 0;
 
     write64bits_dram(va2pa(0x7fffffffdf80, ac), 0, ac);
     write64bits_dram(va2pa(0x7fffffffdf78, ac), 0x0, ac);

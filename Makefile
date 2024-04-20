@@ -1,5 +1,5 @@
 CC = /usr/bin/gcc
-CFLAGS = -Wall -g -O2 -Werror -std=gnu99 -Wno-unused-function
+CFLAGS = -Wall -g -O0 -Werror -std=gnu99 -Wno-unused-function
 
 EXE_HADRWARE = exe_hardware
 

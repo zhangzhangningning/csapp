@@ -206,21 +206,26 @@ Note: SRAM cache address is translated physical address
     cmp     compare
     test    test
 */
+typedef union CPU_FLAGS_STRUCT {
+    uint64_t __flag_values;
+    struct {
+        // carry flag: detect overflow for uinsigned operations
+        uint16_t CF;
+        // zero flag: result is zero
+        uint16_t ZF;
+        // sign flag: result is negative: highest bit
+        uint16_t SF;
+        // overflow flag: detect overflow for signed operations
+        uint16_t OF;    
+    };
+} cpu_flag_t;
 
 typedef struct CORE_STRUCT {
     union {
         uint64_t rip;
         uint32_t eip;
     };
-    // carry flag: detect overflow for uinsigned operations
-    uint16_t CF;
-    // zero flag: result is zero
-    uint16_t ZF;
-    // sign flag: result is negative: highest bit
-    uint16_t SF;
-    // overflow flag: detect overflow for signed operations
-    uint16_t OF;
-
+    cpu_flag_t flags;
     // register files
     reg_t reg;
     uint64_t pdbr; // page directroy base register
