@@ -13,7 +13,7 @@
 #define DEBUG_PARSEINST         0x80
 #define DEBUG_DATASTRUCTURE     0x100
 
-#define DEBUG_VERBOSE_SET       0x41
+#define DEBUG_VERBOSE_SET       0x001
 
 // od page walk
 #define DEBUG_ENSBLE_PAGE_WALK  0

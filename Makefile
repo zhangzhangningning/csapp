@@ -1,7 +1,8 @@
 CC = /usr/bin/gcc
 CFLAGS = -Wall -g -O0 -Werror -std=gnu99 -Wno-unused-function
 
-EXE_HADRWARE = exe_hardware
+
+BIN_HADRWARE = ./bin/test_hardware
 
 SRC_DIR = ./src
 
@@ -14,15 +15,17 @@ MEMORY = $(SRC_DIR)/hardware/memory/dram.c
 
 
 #main
-MAIN = $(SRC_DIR)/main_hardware.c
+TEST_HARDWARE = $(SRC_DIR)/tests/test_hardware.c
 
-CODE = $(COMMON) $(CPU) $(MEMORY) $(MAIN) 
+CODE = $(COMMON) $(CPU) $(MEMORY) $(TEST_HARDWARE) 
 
 .PHONY:hardware
 
 hardware:
-	$(CC) $(CFLAGS) -I$(SRC_DIR) $(CODE) -o $(EXE_HADRWARE)
-	./$(EXE_HADRWARE)
+	chmod +x ./build_directory.sh
+	./build_directory.sh   
+	$(CC) $(CFLAGS) -I$(SRC_DIR) $(CODE) -o $(BIN_HADRWARE)
+	./$(BIN_HADRWARE)
 
 clean:
-	rm -f *.o *~$(EXE_HADRWARE)
+	rm -f *.o *~$(BIN_HADRWARE)
